@@ -1,0 +1,52 @@
+{% extends 'adminbase.html.twig' %}
+{% block title %} Sipariş Sayfası {% endblock %}
+{% block content %}
+    <!--inner block start here-->
+    <div class="inner-block">
+        <div class="blank">
+            <h2>Sipariş Listesi</h2>
+            <div class="blankpage-main">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>Tutar</th>
+                    <th>İsim</th>
+                    <th>Adres</th>
+                    <th>Şehir</th>
+                    <th>Telefon</th>
+                    <th>Bilgi</th>
+                    <th>Kargo Durumu</th>
+                    <th>Hareket</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for order in orders %}
+                    <tr>
+                        <td>{{ order.amount }} TL</td>
+                        <td>{{ order.name }}</td>
+                        <td>{{ order.address }}</td>
+                        <td>{{ order.city }}</td>
+                        <td>{{ order.phone }}</td>
+                        <td>{{ order.shipinfo }}</td>
+                        <td>{{ order.status }}</td>
+                        <td>
+                            <a href="javascript:openWin('{{ path('admin_orders_show', {'id': order.id}) }}','','toolbar=no,location=no,directories=0,status=no,top=100,left=200,menuBar=no,scrollBars=no,resizable=no,width=600,height=500');">
+                                Göster
+                            </a>
+
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="13">Kayıt Bulunamadı</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </div>
+    </div>
+    </section>
+{% endblock %}

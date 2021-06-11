@@ -1,0 +1,81 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %}Sipariş Bilgisi{% endblock %}
+{% block sidebar %}{{ include ('home/_usersidebar.html.twig') }} {% endblock %}
+
+
+{% block content %}
+    <div class="col-sm-9 padding-right">
+        <div class="features_items"><!--features_items-->
+            <h2>Sipariş Bilgileri</h2>
+            <table class="table">
+                <thead>
+                <tr>
+
+                    <th>Adet</th>
+                    <th>İsim</th>
+                    <th>Adres</th>
+                    <th>Şehir</th>
+                    <th>Telefon</th>
+                    <th>Bilgi</th>
+                    <th>Durum</th>
+                    <th>Not</th>
+
+
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr>
+                    <td>{{ order.amount }}</td>
+                    <td>{{ order.name }}</td>
+                    <td>{{ order.address }}</td>
+                    <td>{{ order.city }}</td>
+                    <td>{{ order.phone }}</td>
+                    <td>{{ order.shipinfo }}</td>
+                    <td>{{ order.status }}</td>
+                    <td>{{ order.note }}</td>
+                </tr>
+
+                </tbody>
+            </table>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>id</th>
+                    <th>Ürün Adı</th>
+                    <th>Satış Fiyatı</th>
+                    <th>Miktarı</th>
+                    <th>Tutar</th>
+                    <th>Durum</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% set total=0 %}
+                {% for rs in orderdetail %}
+                    <tr>
+                        <td>{{ rs.id }}</td>
+                        <td>{{ rs.name }}</td>
+                        <td>₺{{ rs.price }}</td>
+                        <td>{{ rs.quantity }}Adet</td>
+                        <td>₺{{ rs.amount }}</td>
+                        <td>{{ rs.status }}</td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="13">Sipariş Detayları</td>
+                    </tr>
+                {% endfor %}
+                <tr>
+                    <td colspan="13" class="btn-warning"><b>Toplam alışveriş tutarınız:</b> ₺{{ order.amount }} </td>
+                </tr>
+                </tbody>
+            </table>
+            <a href="{{ path('orders_index') }}" class="btn btn-danger"><--  Geri dön</a>
+        </div>
+    </div>
+    </div>
+    </div>
+    </section>
+{% endblock %}

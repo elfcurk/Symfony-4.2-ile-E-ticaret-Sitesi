@@ -1,0 +1,14 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %}New Orders{% endblock %}
+{% block sidebar %} {% include 'home/_usersidebar.html.twig' %} {% endblock %}
+{% block content %}
+    <div class="col-sm-9 padding-right">
+        <div class="features_items"><!--features_items-->
+    {{ include('orders/_form.html.twig') }}
+        </div>
+        </div>
+        </div>
+        </div>
+        </section>
+{% endblock %}

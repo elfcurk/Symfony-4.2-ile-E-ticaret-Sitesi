@@ -1,0 +1,45 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %}{{ data[0].title }} {% endblock %}
+{% block keywords %}{{ data[0].keywords }} {% endblock %}
+{% block description %}{{ data[0].description }} {% endblock %}
+
+
+{% block content %}
+
+    <hr>
+    <div class="well well-sm">
+        <h1>İletişim Bilgileri</h1>
+        <hr>
+        <div class="row">
+            <div class="span8">
+                {{ data[0].contact|raw }}
+            </div>
+            <div class="span4">
+                <h4>Bize Ulaşın</h4>
+                {{ include('admin/messages.html.twig') }}
+                <form class="form-horizontal" method="post">
+                    <fieldset>
+                        <div class="control-group">
+                            <input type="text" name="messages[name]" placeholder="name" class="input-group"/>
+                        </div>
+                        <div class="control-group">
+                            <input type="email" name="messages[email]" placeholder="email" class="input-group"/>
+                        </div>
+                        <div class="control-group">
+                            <input type="text" name="messages[subject]" placeholder="subject" class="input-group"/>
+                        </div>
+                        <div class="control-group">
+                            <textarea rows="3" name="messages[message]" cols="8" placeholder="Konu nedir?" id="textarea" class="input"></textarea>
+                        </div>
+                        <input type="hidden" name="token" value="{{ csrf_token('form-message') }}"/>
+                        <div class="control-group">
+                            <button type="submit" value="gönder">Gönder</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

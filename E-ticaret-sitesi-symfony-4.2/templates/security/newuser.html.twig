@@ -1,0 +1,48 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %} Login {{data[0].title }} {% endblock %}
+{% block keywords %} {{ data[0].keywords }} {% endblock %}
+{% block description %} {{ data[0].description }} {% endblock %}
+{% block sidebar %}
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        {% include 'home/_usersidebar.html.twig' %}
+    {% endif %}
+{% endblock %}
+{% block content %}
+
+    <div class="cols-sm-50">
+
+    </div>
+    <div class="cols-sm-10">
+        <div class="cols-sm-10">
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                Zaten Üyesiniz <br>
+                User Name : {{ app.user.name }} <hr>
+                User Email : {{ app.user.email }} <hr>
+                User Roles : {% for item in app.user.roles %} <hr>
+                {{ item }}<br>
+            {% endfor %}
+                <hr>
+            {% else %}
+                <h2>Yeni Üye Formu</h2>
+                <form class="form-horizontal" method="post">
+                    <input type="text" class="form-control" name="user[name]" placeholder="Ad Soyad" required="">
+                    <input type="text" class="form-control" name="user[email]" placeholder="Email" required="">
+                    <input type="password" name="user[password]" class="lock" placeholder="Şifre">
+                    <input type="text" class="form-control" name="user[address]" placeholder="Adres" required="">
+                    <input type="text" class="form-control" name="user[city]" placeholder="Şehir" required="">
+                    <input type="text" class="form-control" name="user[phone]" placeholder="Telefon" required="">
+
+
+                    <div class="forgot-top-grids">
+                        <div class="clearfix"> </div>
+                    </div>
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                    <input type="submit" name="Sign In" value="Kaydet">
+                </form>
+            {% endif %}
+            <div class="row"></div>
+        </div>
+    </div>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+{% endblock %}

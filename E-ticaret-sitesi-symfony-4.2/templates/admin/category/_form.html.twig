@@ -1,0 +1,61 @@
+<form class="form-horizontal" method="post">
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Üst Kategori</label>
+        <div class="col-sm-5">
+            <select name="category[parentid]" class="form-control">
+
+                {% if category.parentid!=0 %}
+                     <option value="{{ category.parentid }}">{{ catname.title }}</option>
+                {% else %}
+                     <option value="0">Ana Kategori</option>
+                {% endif %}
+
+                <option value="0">Ana Kategori</option>
+                {% for cat in catlist %}
+                <option value="{{ cat.id }}">{{ cat.title }}</option>
+                {% endfor %}
+
+            </select>
+        </div>
+
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Title(Başlık)</label>
+
+        <div class="col-sm-8">
+            <input type="text" class="form-control" name="category[title]" value="{{ category.title }}" placeholder="Title" required="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Keywords(Anahtar Kelimeler)</label>
+
+        <div class="col-sm-8">
+            <input type="text" class="form-control" name="category[keywords]" value="{{ category.keywords }}" placeholder="Keywords" required="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Description(Kısa Açıklama)</label>
+
+        <div class="col-sm-8">
+            <input type="text" class="form-control" name="category[description]" value="{{ category.description }}" placeholder="Description" required="">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Aktiflik</label>
+        <div class="col-sm-5">
+            <select name="category[status]" class="form-control">
+                <option>{{ category.status }}</option>
+                <option>True</option>
+                <option selected>False</option>
+            </select>
+        </div>
+    </div>
+
+
+    <div class="forgot-top-grids">
+        <div class="clearfix"> </div>
+    </div>
+    <input type="submit" name="Sign In" value="Kaydet">
+</form>
+

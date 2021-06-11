@@ -1,0 +1,29 @@
+{% extends 'adminbase.html.twig' %}
+{% block title %} Ürün Düzenleme {% endblock %}
+{% block content %}
+    <!--inner block start here-->
+    <div class="inner-block">
+        <div class="blank">
+            <h2>Ürün Düzenle</h2>
+            <div class="blankpage-main">
+                {{ include('admin/messages.html.twig') }}
+
+                <div class="table-responsive">
+
+                    {{ include('admin/product/_form.html.twig') }}
+
+                    <a href="{{ path('admin_product_index') }}">back to list</a>
+
+                    <script>
+                        ClassicEditor
+                            .create( document.querySelector( '#detail' ) )
+                            .catch( error => {
+                                console.error( error );
+                            } );
+                    </script>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

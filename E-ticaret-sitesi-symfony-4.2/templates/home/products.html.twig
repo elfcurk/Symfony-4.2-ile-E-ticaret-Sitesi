@@ -1,0 +1,43 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %}  {{ data[0].title }} {% endblock %}
+{% block keywords %} {{ data[0].keywords }} {% endblock %}
+{% block description %} {{ data[0].description }} {% endblock %}
+{% block sidebar %} {% include 'home/_sidebar.html.twig' %} {% endblock %}
+
+{% block content %}
+
+        <div class="features_items"><!--features_items-->
+            <h2 class="title text-center">{{ data[0].title }}</h2>
+            {% for rs in products %}
+            <div class="col-sm-4">
+                <div class="product-image-wrapper">
+                    <div class="single-products">
+                        <div class="productinfo text-center">
+                            <img src="{{ asset('uploads') }}/images/{{ rs.image }}" alt="">
+                           <p><strong>₺ {{ rs.sprice }}</strong></p>
+                            <p>{{ rs.title }}</p>
+                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-search"></i>Ürünü İncele</a>
+                        </div>
+                        <div class="product-overlay">
+                            <div class="overlay-content">
+                                <a href="{{ path('product_detail', {'id':rs.id}) }}">
+                               <img width="320" height="320" src="{{ asset('uploads') }}/images/{{ rs.image }}" alt="">
+                                </a>
+                                <p><strong>₺ {{ rs.sprice }}</strong></p>
+                                <p>{{ rs.title }}</p>
+                                <a href="{{ path('product_detail', {'id':rs.id })}}" class="btn btn-default add-to-cart"><i class="fa fa-search"></i>Ürünü İncele</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="choose">
+                        <ul class="nav nav-pills nav-justified">
+                            <li><a href="#"><i class="fa fa-plus-square"></i>İstek listesine ekle</a></li>
+                            <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+{% endblock %}

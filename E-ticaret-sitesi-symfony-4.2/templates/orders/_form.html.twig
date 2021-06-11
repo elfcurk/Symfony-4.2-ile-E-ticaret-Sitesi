@@ -1,0 +1,85 @@
+{{ include('messages.html.twig') }}
+<h3 class="title text-center">Satış İşlemi İçin Gerekli Alanları Doldurunuz</h3>
+<form class="contact-form" method="post">
+    <div class="form-horizontal">
+        <form class="form-group" name="order" action="{{ path('orders_new') }}"method="post">
+            <div class="contact-form">
+                <label class="col-sm-3 control-label">Ödenecek Tutar :</label>
+                <div class="col-sm-8">
+                    <input type="text" name="orders[amount]" value="{{ total }}" placeholder="name" class="form-control"/>
+                </div>
+            </div>
+
+            <hr><hr><hr>
+            <p align="center"><b>KARGO ALICI BİLGİLERİ</b></p>
+            <hr>
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Ad Soyad :</label>
+
+                <div class="col-sm-8">
+                    <input type="text" name="orders[name]" value="{{ app.user.name }}" placeholder="Adı Soyadı" class="form-control"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Adres :</label>
+
+                <div class="col-sm-8">
+                    <input type="text" name="orders[address]" value="{{ app.user.address }}" placeholder="Adres" class="form-control"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Şehir :</label>
+
+                <div class="col-sm-8">
+                    <input type="text" name="orders[city]" value="{{ app.user.city }}" placeholder="Şehir" class="form-control"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Telefon :</label>
+
+                <div class="col-sm-8">
+                    <input type="text" name="orders[phone]" value="{{ app.user.phone }}" placeholder="Telefon" class="form-control"/>
+                </div>
+            </div>
+            <hr>
+            <br><p align="center"><b>KREDİ KARTI BİLGİLERİ</b></p>
+            <hr>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Ad Soyad :</label>
+
+                <div class="col-sm-8">
+                    <input type="text" name="cardholdername" placeholder="Kart Sahibinin Adı Soyadı" class="form-control"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Kart Numarası :</label>
+
+                <div class="col-sm-8">
+                    <input type="text" name="cardnumber"  placeholder="Kart Numarası" class="form-control"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Son Kullanma Tarihi :</label>
+
+                <div class="col-sm-8">
+                    <input type="text" name="carddate" placeholder="Ay/Yıl" class="form-control"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Güvenlik Kodu :</label>
+
+                <div class="col-sm-8">
+                    <input type="text" name="cardsecuritycode"  placeholder="Güvenlik Kodu" class="form-control"/>
+                </div>
+            </div>
+            <input type="hidden" name="token" value="{{ csrf_token('form-order') }}"/>
+            <label class="col-sm-2 control-label"></label>
+            <div class="form-group">
+                <input class="btn btn-block btn-success" type="submit" value="SATIN AL">
+
+            </div>
+        </form>
+    </div>
+</form>
+

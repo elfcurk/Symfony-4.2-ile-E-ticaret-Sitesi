@@ -1,0 +1,23 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %} Hakkımızda {{data[0].title }} {% endblock %}
+{% block keywords %} {{ data[0].keywords }} {% endblock %}
+{% block description %} {{ data[0].description }} {% endblock %}
+{% block content %}
+
+    <div align="center">
+        <h1>Hakkımızda</h1>
+    </div>
+    <div align="center">
+        <div class="col-sm-20"
+        <div class="span10 col-sm-20  header-middle">
+            <p>
+                {{ data[0].aboutus|raw }}
+
+            </p>
+            <div class="cols-grids"></div>
+
+        </div>
+    </div>
+
+{% endblock %}

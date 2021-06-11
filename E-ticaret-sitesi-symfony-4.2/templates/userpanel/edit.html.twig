@@ -1,0 +1,14 @@
+{% extends 'frontbase.html.twig' %}
+{% block title %}Profil Bilgileri{% endblock %}
+{% block sidebar %} {% include 'home/_usersidebar.html.twig' %} {% endblock %}
+{% block content %}
+    <div class="col-sm-9 padding-right">
+        <div class="features_items"><!--features_items-->
+            <h4 align="center">Üye Profil Bilgileri</h4>
+            {{ include('userpanel/_form.html.twig', {'button_label':'Update'}) }}
+        </div>
+    </div>
+    </div>
+    </div>
+    </section>
+{% endblock %}

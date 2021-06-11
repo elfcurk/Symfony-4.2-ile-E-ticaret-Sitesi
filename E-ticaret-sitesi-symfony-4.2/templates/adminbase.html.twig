@@ -1,0 +1,177 @@
+<!--Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title> {% block title %} Shoppy an Admin Panel Category Flat Bootstrap Responsive Website Template | Blank :: w3layouts {% endblock %} </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Shoppy Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <link href="{{ asset('admin') }}/css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+    <!-- Custom Theme files -->
+    <link href="{{ asset('admin') }}/css/style.css" rel="stylesheet" type="text/css" media="all"/>
+    <!--js-->
+    <script src="{{ asset('admin') }}/js/jquery-2.1.1.min.js"></script>
+    <!--icons-css-->
+    <link href="{{ asset('admin') }}/css/font-awesome.css" rel="stylesheet">
+    <!--Google Fonts-->
+    <link href='//fonts.googleapis.com/css?family=Carrois+Gothic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Work+Sans:400,500,600' rel='stylesheet' type='text/css'>
+    <!--//skycons-icons-->
+
+
+    <SCRIPT language="JavaScript" type="text/javascript">
+        function openWin(windowURL,windowName,windowFeatures) { window.open(windowURL,windowName,windowFeatures);}
+    </SCRIPT>
+
+    <script src="https://cdn.ckeditor.com/ckeditor5/11.2.0/classic/ckeditor.js"></script>
+
+</head>
+<body>
+<div class="page-container">
+    <div class="left-content">
+        <div class="mother-grid-inner">
+            <!--header start here-->
+            <div class="header-main">
+                <div class="header-left">
+                    <div class="logo-name">
+                        <a href="{{ asset('admin') }}/index.html"> <h1>Kahve Kutusu</h1>
+                            <!--<img id="logo" src="" alt="Logo"/>-->
+                        </a>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+                <div class="header-right">
+
+                    <!--notification menu end -->
+                    <div class="profile_details">
+
+                        <ul>
+                            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+
+                            <li class="dropdown profile_details_drop">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+
+                                    <div class="profile_img">
+                                            <span class="prfil-img"><img src="{{ asset('admin') }}/images/p1.png" alt=""> </span>
+                                            <div class="user-name">
+                                                <p>{{ app.user.name }}</p>
+                                            </div>
+                                            <i class="fa fa-angle-down lnr"></i>
+                                            <i class="fa fa-angle-up lnr"></i>
+                                            <div class="clearfix"></div>
+
+                                    </div>
+                                </a>
+                                <ul class="dropdown-menu drp-mnu">
+                                    <li> <a href="{{ path('admin_setting_index') }}"><i class="fa fa-cog"></i> Ayarlar</a> </li>
+                                    <li> <a href="{{ path('userpanel') }}"><i class="fa fa-user"></i> Profil</a> </li>
+                                    <li> <a href="{{ path('app_logout') }}"><i class="fa fa-sign-out"></i> Çıkış yap</a> </li>
+                                </ul>
+                            </li>
+                            {% else %}
+                                Login olmadı
+                            {% endif %}
+                        </ul>
+
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+            <!--heder end here-->
+            <!-- script-for sticky-nav -->
+            <script>
+                $(document).ready(function() {
+                    var navoffeset=$(".header-main").offset().top;
+                    $(window).scroll(function(){
+                        var scrollpos=$(window).scrollTop();
+                        if(scrollpos >=navoffeset){
+                            $(".header-main").addClass("fixed");
+                        }else{
+                            $(".header-main").removeClass("fixed");
+                        }
+                    });
+
+                });
+            </script>
+            <!--content-->
+            {% block content %} {% endblock %}
+            <!-- /script-for sticky-nav -->
+            <!--inner block start here-->
+            <!--inner block end here-->
+            <!--copy rights start here-->
+            <div class="copyrights">
+                <p>© 2016 Shoppy. All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
+            </div>
+            <!--COPY rights end here-->
+        </div>
+    </div>
+    <!--slider menu-->
+    <div class="sidebar-menu">
+        <div class="logo"> <a href="#" class="sidebar-icon"> <span class="fa fa-bars"></span> </a> <a href="#"> <span id="logo" ></span>
+                <!--<img id="logo" src="" alt="Logo"/>-->
+            </a> </div>
+        <div class="menu">
+            <ul id="menu" >
+                <li id="menu-home" ><a href="{{ url('admin') }}"><i class="fa fa-home"></i><span>Anamenü</span></a></li>
+                <li><a href="#"><i class="fa fa-plus"></i><span>Siparişler</span><span class="fa fa-angle-right" style="float: right"></span></a>
+                    <ul>
+                        <li><a href="{{ path('admin_orders_index',{'slug':'new'}) }}">Yeni Siparişler</a></li>
+                        <li><a href="{{ path('admin_orders_index',{'slug':'onaylandı'}) }}">Onaylananlar</a></li>
+                        <li><a href="{{ path('admin_orders_index',{'slug':'iptal'}) }}">İptal Edilenler</a></li>
+                        <li><a href="{{ path('admin_orders_index',{'slug':'kargoda'}) }}">Kargodakiler</a></li>
+                        <li><a href="{{ path('admin_orders_index',{'slug':'tamamlandı'}) }}">Tamamlananlar</a></li>
+                    </ul>
+                </li>
+
+                <li id="menu-home" ><a href="{{ path('admin_product_index') }}"><i class="fa fa-asterisk"></i><span>Ürünler</span></a></li>
+                <li id="menu-home" ><a href="{{ path('admin_category_index') }}"><i class="fa fa-th-large"></i><span>Kategoriler</span></a></li>
+                <li id="menu-home" ><a href="{{ url('admin') }}/user"><i class="fa fa-heart"></i><span>Üyeler</span></a></li>
+                <li id="menu-home" ><a href="index.html"><i class="fa fa-pencil"></i><span>Üye Yorumları</span></a></li>
+                <li id="menu-home" ><a href="{{ path('admin_messages_index') }}"><i class="fa fa-envelope"></i><span>Mesajlar</span></a></li>
+                <li id="menu-home" ><a href="index.html"><i class="fa fa-cog"></i><span>SSS</span></a></li>
+
+        </div>
+    </div>
+    <div class="clearfix"> </div>
+</div>
+<!--slide bar menu end here-->
+<script>
+    var toggle = true;
+
+    $(".sidebar-icon").click(function() {
+        if (toggle)
+        {
+            $(".page-container").addClass("sidebar-collapsed").removeClass("sidebar-collapsed-back");
+            $("#menu span").css({"position":"absolute"});
+        }
+        else
+        {
+            $(".page-container").removeClass("sidebar-collapsed").addClass("sidebar-collapsed-back");
+            setTimeout(function() {
+                $("#menu span").css({"position":"relative"});
+            }, 400);
+        }
+        toggle = !toggle;
+    });
+</script>
+<!--scrolling js-->
+<script src="{{ asset('admin') }}/js/jquery.nicescroll.js"></script>
+<script src="{{ asset('admin') }}/js/scripts.js"></script>
+<!--//scrolling js-->
+<script src="{{ asset('admin') }}/js/bootstrap.js"> </script>
+<!-- mother grid end here-->
+{% block javascripts %} {% endblock %}
+</body>
+</html>
+
+
+
+

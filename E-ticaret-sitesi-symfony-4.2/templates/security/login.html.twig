@@ -1,0 +1,72 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %} Login-{{ data[0].title }} {% endblock %}
+{% block keywords %}{{ data[0].keywords }} {% endblock %}
+{% block description %}{{ data[0].description }} {% endblock %}
+{% block sidebar %}
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        {{  include ('home/_usersidebar.html.twig') }}
+    {% endif %}
+{% endblock %}
+{% block content %}
+    <div class="well well-sm">
+        <h2 align="center">LOGİN</h2>
+                <hr>
+                <div class="form-horizontal">
+                    <div class="span4">
+                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        User Name:{{ app.user.name }}<br>
+                        User E-mail:{{ app.user.email }}<br>
+                        User Roles: {% for item in app.user.roles %}
+                            {{ item }}
+                        {% endfor %}
+
+                        {% else %}
+                        {{ include('admin/messages.html.twig') }}
+
+                        {% if error %}
+                            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                        {% endif %}
+
+                        <form class="form-horizontal" name="user" method="post">
+                            <fieldset>
+                                <div class="form-horizontal">
+                                    <label >Email :</label>
+                                    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="Email" required="">
+                                    <br><label>Şifre  :</label>
+                                    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+                                    <div class="row"></div>
+
+                                    <input type="hidden" name="_csrf_token"
+                                           value="{{ csrf_token('authenticate') }}"
+                                    >
+
+                                    {#
+                                        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+                                        See https://symfony.com/doc/current/security/remember_me.html
+
+                                        <div class="checkbox mb-3">
+                                            <label>
+                                                <input type="checkbox" name="_remember_me"> Remember me
+                                            </label>
+                                        </div>
+                                    #}
+
+                                    <br><button class="btn btn-success btn-block" type="submit">Giriş Yap</button>
+
+                                    <a href="{{ path('new_user') }}" class="btn btn-primary btn-block">Üye Ol</a>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    </section>
+{% endblock %}

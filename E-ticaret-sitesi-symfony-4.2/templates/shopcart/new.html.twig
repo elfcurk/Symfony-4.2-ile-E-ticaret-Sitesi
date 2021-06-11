@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Shopcart{% endblock %}
+
+{% block content %}
+<div class="col-sm-9 padding-right">
+    <div class="features_items">
+    {{ include('shopcart/_form.html.twig') }}
+    </div>
+</div>
+    </div>
+    </div>
+    </section>
+    <a href="{{ path('shopcart_index') }}">back to list</a>
+{% endblock %}

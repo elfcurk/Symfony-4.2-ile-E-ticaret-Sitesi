@@ -1,0 +1,82 @@
+<form class="form-horizontal" method="post">
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Kategorisi</label>
+        <div class="col-sm-5">
+            <select name="product[category_id]" class="form-control">
+                {% if (catname)  %}
+                 <option value="{{ product.categoryid }}">{{ catname[0].title }}</option>//0. satırda bulunan title değerini getir.
+                {% endif %}
+
+                {% for cat in catlist %}//burda döngü var, hepsi yazdırılıyor
+                    <option value="{{ cat.id }}">{{ cat.title }}</option>
+                {% endfor %}
+
+            </select>
+        </div>
+
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Adı</label>
+
+        <div class="col-sm-8">
+            <input type="text" class="form-control" name="product[title]" value="{{ product.title }}" placeholder="Title" required="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Anahtar Kelimeler</label>
+
+        <div class="col-sm-8">
+            <input type="text" class="form-control" name="product[keywords]" value="{{ product.keywords }}" placeholder="Keywords" required="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Kısa Açıklama</label>
+
+        <div class="col-sm-8">
+            <input type="text" class="form-control" name="product[description]" value="{{ product.description }}" placeholder="Description" required="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Alış Fiyatı</label>
+
+        <div class="col-sm-8">
+            <input type="text" class="form-control" name="product[pprice]" value="{{ product.pprice }}" placeholder="Title" required="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Satış Fiyatı</label>
+
+        <div class="col-sm-8">
+            <input type="text" class="form-control" name="product[sprice]" value="{{ product.sprice }}" placeholder="Title" required="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Miktar</label>
+
+        <div class="col-sm-8">
+            <input type="text" class="form-control" name="product[amount]" value="{{ product.amount }}" placeholder="Title" required="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Durum</label>
+        <div class="col-sm-5">
+            <select name="product[status]" class="form-control">
+                <option>{{ product.status }}</option>
+                <option>True</option>
+                <option>False</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">Detay</label>
+
+        <div class="col-sm-8">
+            <textarea id="detail" name="product[detail]" rows="10" cols="74">{{ product.detail }}</textarea>
+        </div>
+    </div>
+
+    <div class="forgot-top-grids">
+        <div class="clearfix"> </div>
+    </div>
+    <input type="submit" name="Sign In" value="Kaydet">
+</form>

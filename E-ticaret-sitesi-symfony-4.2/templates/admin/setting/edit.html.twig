@@ -1,0 +1,23 @@
+{% extends 'adminbase.html.twig' %}
+{% block title %} Ayarlar {% endblock %}
+{% block content %}
+    <!--inner block start here-->
+    <div class="inner-block">
+        <div class="blank">
+            <h2>Ayarlar Sayfası</h2>
+            <div class="blankpage-main">
+                {{ include('admin/messages.html.twig') }}
+
+                <div class="table-responsive">
+
+
+                    {{ include('admin/setting/_form.html.twig', {'button_label': 'Update'}) }}
+
+                    <a href="{{ path('admin_setting_index') }}">Geri Dön</a>
+
+                    {{ include('admin/setting/_delete_form.html.twig') }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

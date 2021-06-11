@@ -1,0 +1,99 @@
+<style>
+     ul#menu-v, #menu-v ul
+     {
+         width:200px; /* Main Menu width */
+         border:0px solid #ffffff;
+         list-style:none; margin:0; padding:0;
+         z-index:9;
+     }
+
+     #menu-v li
+     {
+         margin:0;padding:0;
+         position:relative;
+         background-color:#ffffff ; /*fallback color*/
+         background-color:#ffffff;
+         transition:background 0.5s;
+     }
+     #menu-v li:hover
+     {
+         background-color:rgba(255,255,255,0.5);
+     }
+
+     #menu-v a
+     {
+         font:normal 14px "Comic Sans MS";
+         border-top:0px solid #3e2916;
+         display:block;
+         color:#467501;
+         text-decoration:#CCCCCC;
+         line-height:37px;
+         padding-left:22px;
+         position:relative;
+     }
+
+     #menu-v li:first-child a
+     {
+         border-top:0;
+     }
+     #menu-v a.arrow:hover::after
+     {
+         background-color: #2c618f;
+         color: darkred;
+     }
+
+     #menu-v a.arrow::after{
+         content:'';
+         position:absolute;
+         display:inline;
+         top:50%;
+         margin-top:-4px;
+         right:8px;
+         border-width:6px;
+         border-style:solid;
+         border-color:transparent transparent transparent white;
+         transition:border-color 0.5s;
+     }
+
+     #menu-v li a.arrow:hover::after
+     {
+         background-color: #666;
+         border-color:transparent transparent transparent red;
+     }
+
+     /*Sub level menu items
+     ---------------------------------------*/
+     #menu-v li ul
+     {
+         min-width:180px; /* Sub level menu min width */
+         position:absolute;
+         display:none;
+         left:100%;
+         top:0;
+     }
+
+     #menu-v li:hover > ul
+     {
+         display:block;
+     }
+ </style>
+
+    <div class="row">
+            <div class="col-sm-3">
+                <div class="left-sidebar">
+                    <h2>Kategoriler</h2>
+                    <div class="well text-center"><!--category-products-->
+                        {% for cat in cats %}
+                            {{ cat|raw }}
+                        {% endfor %}
+                    </div>
+                    <div class=""><!--shipping-->
+                        <br><br><br><br><br><br><br><br>
+                        <img src="images/home/kalp2.jpg" alt=""/><br><br><br><br><br><br><br><br><br>
+                        <img src="images/home/kalp2.jpg" alt=""/><br><br><br><br><br><br><br><br><br>
+                        <img src="images/home/kalp2.jpg" alt=""/>
+
+                    </div><!--/shipping-->
+
+                </div>
+            </div>

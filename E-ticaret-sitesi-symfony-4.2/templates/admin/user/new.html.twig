@@ -1,0 +1,55 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %} Üye Ekleme {% endblock %}
+
+{% block content %}
+    <!--inner block start here-->
+    <div class="inner-block">
+        <div class="blank">
+            <h2>Üye Ekleme</h2>
+            <div class="signup-main">
+                <div class="signup-head">
+                    <h1>Yeni Üye Ekleme Formu</h1>
+                </div>
+                <div class="signup-block">
+
+                    <form class="form-horizontal" method="post">
+                        <input type="text" class="form-control" name="user[name]" placeholder="Ad Soyad" required="">
+                        <input type="text" class="form-control" name="user[email]" placeholder="Email" required="">
+                        <input type="password" name="user[password]" class="lock" placeholder="Şifre">
+
+                        <div class="form-group">
+                            <label for="inputText" class="col-sm-2 control-label">Türü</label>
+                            <div class="col-sm-5">
+                                <select name="user[roles]" class="form-control">
+                                    <option>ROLE_ADMIN</option>
+                                    <option>ROLE_USER</option>
+                                    <option>ROLE_POWER</option>
+                                    <option>ROLE_MEMBER</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="inputText" class="col-sm-2 control-label">Aktiflik</label>
+                            <div class="col-sm-5">
+                                <select name="user[status]"class="form-control">
+                                    <option>True</option>
+                                    <option>False</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <div class="forgot-top-grids">
+                            <div class="clearfix"> </div>
+                        </div>
+                        <input type="submit" name="Sign In" value="Kaydet">
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!--inner block end here-->
+{% endblock %}

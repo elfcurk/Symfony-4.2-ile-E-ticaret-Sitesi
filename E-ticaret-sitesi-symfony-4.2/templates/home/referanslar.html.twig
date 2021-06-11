@@ -1,0 +1,22 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %} Referanslar {{data[0].title }} {% endblock %}
+{% block keywords %} {{ data[0].keywords }} {% endblock %}
+{% block description %} {{ data[0].description }} {% endblock %}
+{% block content %}
+
+    <div align="center">
+        <div align="center"
+        <div class="span10 col-sm-20  header-middle">
+            <p>
+                {{ data[0].referances|raw }}
+                <img src="{{ asset('uploads') }}/images/ref2.jpg" class="girl img-responsive" alt="" height="350" width="350">
+                <img src="{{ asset('uploads') }}/images/referans.jpg" class="girl img-responsive" alt="" height="350" width="350">
+                <img src="{{ asset('uploads') }}/images/ref.jpg" class="girl img-responsive" alt="" height="350" width="350">
+            </p>
+            <div class="cols-grids"></div>
+
+        </div>
+    </div>
+
+{% endblock %}

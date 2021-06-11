@@ -1,0 +1,105 @@
+{{ include('admin/messages.html.twig') }}
+<div class="inner-block">
+    <div class="blank">
+        <div class="prograc-blocks">
+            <div class="home-progres-main">
+
+                <h2 align="center" class="text-danger">Sipariş Detayı</h2>
+
+            </div>
+            <div class="bar_group group_ident-1">
+                <hr>
+                <table border="0" align="center">
+                    <thead>
+                    <tr>
+                        <th>Tutar</th>
+                        <td>{{ order.amount }} TL</td>
+                    </tr>
+                    <tr>
+                        <th>İsim</th>
+                        <td>{{ order.name }}</td>
+                    </tr>
+                    <tr>
+                        <th>Adres</th>
+                        <td>{{ order.address }}</td>
+                    </tr>
+                    <tr>
+                        <th>Şehir</th>
+                        <td>{{ order.city }}</td>
+
+                    </tr>
+                    <tr>
+                        <th>Telefon</th>
+                        <td>{{ order.phone }}</td>
+                    </tr>
+                    </thead>
+                    <form action="{{ path('admin_orders_update',{'id':order.id}) }}" method="post">
+
+
+                        <tr>
+                            <th>Bilgi</th>
+                            <td><textarea name="shipinfo"rows="3"cols="45">{{ order.shipinfo }}</textarea></td>
+                        </tr>
+                        <tr>
+                            <th>Admin Notu</th>
+                            <td><textarea name="note"rows="3"cols="45">{{ order.note }}</textarea></td>
+                        </tr>
+                        <tr>
+                            <th>Durum</th>
+                            <td><select name="status">
+                                    <option>{{ order.status }}</option>
+                                    <option>Onaylandı</option>
+                                    <option>İptal</option>
+                                    <option>Kargoda</option>
+                                    <option>Tamamlandı</option>
+                                </select>
+                                <input type="submit" value="Güncelle">
+                            </td>
+                        </tr>
+                    </form>
+
+                </table><hr>
+                <table border="0" align="center">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Ürün İsmi </th>
+                        <th>Satış Fiyatı </th>
+                        <th>Miktar </th>
+                        <th>Tutar </th>
+                        <th>Durum </th>
+
+                    </tr>
+                    </thead>
+                    <tbody></tbody>
+                    {% set total=0 %}
+                    {% for rs in orderdetail %}
+                        <tr>
+                            <td>{{ rs.id }}</td>
+                            <td>{{ rs.name }}</td>
+                            <td>₺ {{ rs.price }}</td>
+                            <td>{{ rs.quantity }} Adet</td>
+                            <td>₺ {{ rs.amount }}</td>
+                            <td>{{ rs.status }}</td>
+                        </tr>
+
+                    {% else %}
+                        <tr>
+                            <td colspan="5">Sipariş Bulunamadı</td>
+                        </tr>
+                    {% endfor %}
+
+                    <tr>
+                        <td colspan="10" class="btn-warning"><b>Toplam Alışveriş Tutarı : </b>₺ {{ order.amount }}<br>
+
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <hr>
+            </div>
+            <script src="js/bars.js"></script>
+            <!--//Progress bars-->
+        </div>
+    </div>
+</div>
